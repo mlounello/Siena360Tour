@@ -1,47 +1,61 @@
+let viewer; // Global viewer instance
+
 function load360View(imageSrc) {
-    // Update the 360 image in the viewer
-    document.getElementById('viewer-image').src = imageSrc;
+    const viewerContainer = document.getElementById('viewer');
+
+    // Check if the viewer element exists
+    if (!viewerContainer) {
+        console.error("Viewer element not found!");
+        return; // Stop if the viewer container doesn't exist
+    }
+
+    // If a viewer already exists, destroy it before creating a new one
+    if (viewer) {
+        viewer.destroy();
+    }
+
+    // Initialize Photo Sphere Viewer
+    viewer = new PhotoSphereViewer.Viewer({
+        container: viewerContainer, // Set the container to the viewer div
+        panorama: imageSrc, // Load the image
+        touchmoveTwoFingers: true, // Allow interaction with two fingers
+        mousewheel: true, // Enable zoom
+        navbar: false, // Hide the navigation bar
+        usexmpdata: false, // Disable EXIF data
+        loadingImg: 'path/to/loading-image.png', // Optional loading image (add a real one if you want)
+        defaultLat: 0.3, // Adjust default latitude if needed
+        gyroscope: true // Enable gyroscope control
+    });
 }
 
 function enterVR() {
-    // Enter VR mode (fullscreen)
-    let viewerImage = document.getElementById('viewer-image');
-    if (viewerImage.requestFullscreen) {
-        viewerImage.requestFullscreen();
-    } else if (viewerImage.webkitRequestFullscreen) { // Safari
-        viewerImage.webkitRequestFullscreen();
-    } else if (viewerImage.msRequestFullscreen) { // IE/Edge
-        viewerImage.msRequestFullscreen();
+    // Enter fullscreen mode
+    if (viewer) {
+        viewer.toggleFullscreen();
     }
-    alert('Insert your phone into Google Cardboard.');
 }
 
 function showSubMenu(menuId) {
-    // Hide the main menu
     document.getElementById('main-menu').style.display = 'none';
 
-    // Hide all sub-menus
     let subMenus = document.getElementsByClassName('sub-menu');
     for (let i = 0; i < subMenus.length; i++) {
         subMenus[i].style.display = 'none';
     }
 
-    // Show the selected sub-menu
     document.getElementById(menuId).style.display = 'block';
 }
 
 function showMainMenu() {
-    // Hide all sub-menus
     let subMenus = document.getElementsByClassName('sub-menu');
     for (let i = 0; i < subMenus.length; i++) {
         subMenus[i].style.display = 'none';
     }
 
-    // Show the main menu
     document.getElementById('main-menu').style.display = 'block';
 }
 
-// The following functions load specific 360 images from the raw GitHub LFS URLs
+// Update your functions to load the images using Photo Sphere Viewer
 function loadbaldwin() {
     load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/baldwin.jpg");
 }
