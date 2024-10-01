@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siena College 360 Virtual Tour</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Siena College 360 Virtual Tour</h1>
+    </header>
+
+    <main>
+        <!-- Main Navigation Menu -->
+        <div id="main-menu">
+            <button class="main-btn" onclick="showSubMenu('living')">Living on Campus</button>
+            <button class="main-btn" onclick="showSubMenu('dining')">Dining</button>
+            <button class="main-btn" onclick="showSubMenu('academics')">Academics</button>
+            <button class="main-btn" onclick="showSubMenu('athletics')">Athletics & Fitness</button>
+        </div>
+
+        <!-- Sub Menus -->
+        <div id="living" class="sub-menu" style="display:none;">
+            <button class="back-btn" onclick="showMainMenu()">Back</button>
+            <button class="location-btn" onclick="load360View('assets/townhouses.jpg')">The Townhouses</button>
+            <button class="location-btn" onclick="load360View('assets/ryan_hall.jpg')">Ryan Hall</button>
+            <button class="location-btn" onclick="load360View('assets/snyder_hall.jpg')">Snyder Hall</button>
+            <button class="location-btn" onclick="load360View('assets/upperclassman_dorm.jpg')">Upperclassman Dorm</button>
+        </div>
+
+        <div id="dining" class="sub-menu" style="display:none;">
+            <button class="back-btn" onclick="showMainMenu()">Back</button>
+            <button class="location-btn" onclick="load360View('assets/caseys.jpg')">Casey's</button>
+            <button class="location-btn" onclick="load360View('assets/lonnstrom_dining_hall.jpg')">Lonnstrom Dining Hall</button>
+            <button class="location-btn" onclick="load360View('assets/lonnstrom_buffet.jpg')">Lonnstrom Buffet</button>
+        </div>
+
+        <div id="academics" class="sub-menu" style="display:none;">
+            <button class="back-btn" onclick="showMainMenu()">Back</button>
+            <button class="location-btn" onclick="load360View('assets/morell_science_lab.jpg')">Morell Science Center Lab</button>
+            <button class="location-btn" onclick="load360View('assets/morell_science_center.jpg')">Morell Science Center</button>
+            <button class="location-btn" onclick="load360View('assets/baldwin_nursing_center.jpg')">Baldwin Nursing Center</button>
+            <button class="location-btn" onclick="load360View('assets/hickey_trading_center.jpg')">Hickey Financial Trading Center</button>
+            <button class="location-btn" onclick="load360View('assets/moot_court_room.jpg')">Moot Court Room</button>
+            <button class="location-btn" onclick="load360View('assets/siena_hall_classroom.jpg')">Siena Hall Classroom</button>
+            <button class="location-btn" onclick="load360View('assets/stack_center.jpg')">Stack Center Home for Entrepreneurs</button>
+            <button class="location-btn" onclick="load360View('assets/standish_library.jpg')">Standish Library</button>
+        </div>
+
+        <div id="athletics" class="sub-menu" style="display:none;">
+            <button class="back-btn" onclick="showMainMenu()">Back</button>
+            <button class="location-btn" onclick="load360View('assets/fitness_upstairs.jpg')">Fitness Center Upstairs</button>
+            <button class="location-btn" onclick="load360View('assets/fitness_downstairs.jpg')">Fitness Center Downstairs</button>
+            <button class="location-btn" onclick="load360View('assets/hickey_field.jpg')">Hickey Field</button>
+        </div>
+
+        <!-- 360 Image Viewer -->
+        <div id="viewer">
+            <img id="viewer-image" src="assets/default.jpg" alt="360 View">
+            <button id="vr-mode-btn" onclick="enterVR()">Enter VR Mode</button>
+        </div>
+    </main>
+
+    <script src="js/vrHandler.js"></script>
+</body>
+</html>
