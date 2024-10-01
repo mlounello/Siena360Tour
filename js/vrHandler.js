@@ -17,19 +17,21 @@ function enterVR() {
 }
 
 function showSubMenu(menuId) {
-    // Hide main menu
+    // Hide the main menu
     document.getElementById('main-menu').style.display = 'none';
 
-    // Show the selected submenu
+    // Hide all sub-menus
     let subMenus = document.getElementsByClassName('sub-menu');
     for (let i = 0; i < subMenus.length; i++) {
         subMenus[i].style.display = 'none';
     }
+
+    // Show the selected sub-menu
     document.getElementById(menuId).style.display = 'block';
 }
 
 function showMainMenu() {
-    // Hide all submenus
+    // Hide all sub-menus
     let subMenus = document.getElementsByClassName('sub-menu');
     for (let i = 0; i < subMenus.length; i++) {
         subMenus[i].style.display = 'none';
