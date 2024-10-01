@@ -42,78 +42,78 @@ function showMainMenu() {
 }
 
 // The following functions are for loading the specific 360 images for each location
-function loadCaseys() {
-    load360View("assets/Caseys.jpg");
+function loadRyan() {
+    load360View("assets/ryan.jpg");
 }
 
-function loadFitnessUpstairs() {
-    load360View("assets/FitnessUpstairs.jpg");
+function loadSnyder() {
+    load360View("assets/snyder.jpg");
 }
 
-function loadFitnessDownstairs() {
-    load360View("assets/FitnessDownstairs.jpg");
-}
-
-function loadHickeyField() {
-    load360View("assets/HickeyField.jpg");
-}
-
-function loadHickeyTrading() {
-    load360View("assets/HickeyTrading.jpg");
-}
-
-function loadMootCourt() {
-    load360View("assets/MootCourt.jpg");
-}
-
-function loadRyanHall() {
-    load360View("assets/RyanHall.jpg");
-}
-
-function loadSienaHallClassroom() {
-    load360View("assets/SienaHallClassroom.jpg");
-}
-
-function loadSnyderHall() {
-    load360View("assets/SnyderHall.jpg");
-}
-
-function loadUpperclassmanDorm() {
-    load360View("assets/UpperclassmanDorm.jpg");
+function loadUpperDorm() {
+    load360View("assets/upperdorm.jpg");
 }
 
 function loadTownhouses() {
-    load360View("assets/Townhouses.jpg");
+    load360View("assets/townhouses.jpg");
+}
+
+function loadCaseys() {
+    load360View("assets/caseys.jpg");
 }
 
 function loadLonnstromDining() {
-    load360View("assets/LonnstromDiningHall.jpg");
+    load360View("assets/lonnstromdining.jpg");
 }
 
 function loadLonnstromBuffet() {
-    load360View("assets/LonnstromBuffet.jpg");
+    load360View("assets/lonnstrombuffet.jpg");
 }
 
-function loadMorellScienceLab() {
-    load360View("assets/MorellScienceLab.jpg");
+function loadMorellLab() {
+    load360View("assets/morelllab.jpg");
 }
 
-function loadMorellScienceCenter() {
-    load360View("assets/MorellScienceCenter.jpg");
+function loadMorell() {
+    load360View("assets/morell.jpg");
 }
 
-function loadBaldwinNursingCenter() {
-    load360View("assets/BaldwinNursingCenter.jpg");
+function loadBaldwin() {
+    load360View("assets/baldwin.jpg");
+}
+
+function loadHickeyTrading() {
+    load360View("assets/hickeytrading.jpg");
+}
+
+function loadMootCourt() {
+    load360View("assets/mootcourt.jpg");
+}
+
+function loadSienaHall() {
+    load360View("assets/sienahall.jpg");
 }
 
 function loadStackCenter() {
-    load360View("assets/StackCenter.jpg");
+    load360View("assets/stackcenter.jpg");
 }
 
-function loadStandishLibrary() {
-    load360View("assets/StandishLibrary.jpg");
+function loadStandish() {
+    load360View("assets/standish.jpg");
+}
+
+function loadFitnessUp() {
+    load360View("assets/fitnessup.jpg");
+}
+
+function loadFitnessDown() {
+    load360View("assets/fitnessdown.jpg");
+}
+
+function loadHickeyField() {
+    load360View("assets/hickeyfield.jpg");
 }
 
 function loadTVStudio() {
-    load360View("assets/TVStudio.jpg");
+    load360View("assets/tvstudio.jpg");
 }
