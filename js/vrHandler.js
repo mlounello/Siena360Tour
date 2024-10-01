@@ -1,7 +1,7 @@
 let viewer; // Global viewer instance
 
 function load360View(imageSrc) {
-    const viewerContainer = document.getElementById('viewer');
+    const viewerContainer = document.getElementById('viewer'); // Get the viewer element
 
     // Check if the viewer element exists
     if (!viewerContainer) {
@@ -17,19 +17,18 @@ function load360View(imageSrc) {
     // Initialize Photo Sphere Viewer
     viewer = new PhotoSphereViewer.Viewer({
         container: viewerContainer, // Set the container to the viewer div
-        panorama: imageSrc, // Load the image
+        panorama: imageSrc, // Load the 360-degree image
         touchmoveTwoFingers: true, // Allow interaction with two fingers
         mousewheel: true, // Enable zoom
         navbar: false, // Hide the navigation bar
         usexmpdata: false, // Disable EXIF data
-        loadingImg: 'path/to/loading-image.png', // Optional loading image (add a real one if you want)
         defaultLat: 0.3, // Adjust default latitude if needed
         gyroscope: true // Enable gyroscope control
     });
 }
 
 function enterVR() {
-    // Enter fullscreen mode
+    // Enter fullscreen mode (Photo Sphere Viewer handles this internally)
     if (viewer) {
         viewer.toggleFullscreen();
     }
@@ -64,6 +63,7 @@ function loadcaseys() {
     load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/caseys.jpg");
 }
 
+// Add similar functions for other locations
 function loadfitnessdown() {
     load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/fitnessdown.jpg");
 }
