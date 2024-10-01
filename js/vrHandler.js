@@ -1,8 +1,10 @@
 function load360View(imageSrc) {
+    // Update the 360 image in the viewer
     document.getElementById('viewer-image').src = imageSrc;
 }
 
 function enterVR() {
+    // Enter VR mode (fullscreen)
     let viewerImage = document.getElementById('viewer-image');
     if (viewerImage.requestFullscreen) {
         viewerImage.requestFullscreen();
@@ -14,6 +16,33 @@ function enterVR() {
     alert('Insert your phone into Google Cardboard.');
 }
 
+// Navigation Functions
+function showSubMenu(menuId) {
+    // Hide main menu
+    document.getElementById('main-menu').style.display = 'none';
+
+    // Hide all sub-menus
+    let subMenus = document.getElementsByClassName('sub-menu');
+    for (let i = 0; i < subMenus.length; i++) {
+        subMenus[i].style.display = 'none';
+    }
+
+    // Show the selected sub-menu
+    document.getElementById(menuId).style.display = 'block';
+}
+
+function showMainMenu() {
+    // Hide all sub-menus
+    let subMenus = document.getElementsByClassName('sub-menu');
+    for (let i = 0; i < subMenus.length; i++) {
+        subMenus[i].style.display = 'none';
+    }
+
+    // Show the main menu
+    document.getElementById('main-menu').style.display = 'block';
+}
+
+// Image Loading Functions
 function loadTownhouses() {
     load360View("https://drive.google.com/uc?export=view&id=1sLuGhDas4tIzqqIVFG3CWYXezcH9E8EW");
 }
