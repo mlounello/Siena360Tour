@@ -1,53 +1,139 @@
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Gudea&family=Merriweather&family=Oswald:wght@400&display=swap');
+
+/* Base styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    text-align: center;
+    font-family: 'Merriweather', serif; /* Use Merriweather for body text */
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    color: #333;
 }
 
+/* Header styles */
 header {
-    background-color: #006b54;
+    background-color: #006B54; /* Siena Green */
     color: white;
-    padding: 20px;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
 }
 
-h1 {
+header img {
+    height: 60px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+header h1 {
+    font-family: 'Oswald', sans-serif; /* Oswald for headlines */
+    font-size: 2.5em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #FFFFFF; /* White for headline */
     margin: 0;
 }
 
-#main-menu, .sub-menu {
-    margin-top: 30px;
+/* Main menu styles */
+#main-menu h2 {
+    font-family: 'Gudea', sans-serif; /* Gudea for subheads */
+    color: #006B54; /* Siena Green */
+    text-align: center;
+    font-size: 1.8em;
+    margin-top: 20px;
 }
 
-.main-btn, .location-btn, .back-btn {
-    background-color: #006b54;
-    color: white;
-    border: none;
+.main-btn {
+    display: block;
+    width: 80%;
+    margin: 20px auto;
     padding: 15px;
-    margin: 10px;
-    font-size: 18px;
+    font-size: 1.2em;
+    color: #FFFFFF; /* White text */
+    background-color: #006B54; /* Siena Green */
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-family: 'Oswald', sans-serif; /* Oswald for buttons */
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.main-btn:hover, .location-btn:hover, .back-btn:hover {
-    background-color: #fcc917;
+.main-btn:hover {
+    background-color: #FCC917; /* Siena Gold */
 }
 
-#viewer {
-    padding: 20px;
-}
-
-#viewer img {
-    max-width: 100%;
-    height: auto;
+/* Back button styles */
+.back-btn {
     display: block;
-    margin: 0 auto;
+    margin: 20px auto;
+    padding: 10px;
+    font-size: 1em;
+    background-color: #CCCCCC;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    width: 60px;
+    cursor: pointer;
 }
 
-#vr-mode-btn {
-    background-color: #006b54;
-    color: white;
-    padding: 10px;
+/* Sub-menu styles */
+.sub-menu h2 {
+    font-family: 'Gudea', sans-serif;
+    color: #006B54;
+    text-align: center;
+    font-size: 1.8em;
     margin-top: 20px;
+}
+
+.location-btn {
+    display: block;
+    width: 80%;
+    margin: 15px auto;
+    padding: 12px;
+    font-size: 1.1em;
+    color: #FFFFFF;
+    background-color: #006B54;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Gudea', sans-serif;
+    text-transform: capitalize;
+}
+
+.location-btn:hover {
+    background-color: #FCC917;
+}
+
+/* Viewer styles */
+#viewer {
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 600px) {
+    .main-btn, .location-btn {
+        font-size: 1.5em;
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    .back-btn {
+        width: 80px;
+        font-size: 1.2em;
+    }
+
+    /* Ensure full-screen viewer on mobile */
+    #viewer {
+        width: 100vw;
+        height: 100vh;
+    }
 }

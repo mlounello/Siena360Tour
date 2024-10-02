@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
     <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
 
-    <link rel="stylesheet" href="css/styles.css"> <!-- Your custom CSS -->
+    <link rel="stylesheet" href="css/styles.css"> <!-- Custom Styles -->
 </head>
 <body>
     <header>
+        <img src="assets/siena-logo.png" alt="Siena College Logo"> <!-- Replace with actual logo path -->
         <h1>Siena College 360 Virtual Tour</h1>
     </header>
 
@@ -37,20 +38,12 @@
             <button class="location-btn" onclick="loadtownhouses()">The Townhouses</button>
         </div>
 
-        <!-- Dining -->
-        <div id="dining" class="sub-menu" style="display:none;">
-            <h2>Dining</h2>
-            <button class="back-btn" onclick="showMainMenu()">Back</button>
-            <button class="location-btn" onclick="loadcaseys()">Casey's</button>
-            <button class="location-btn" onclick="loadlonnstromdining()">Lonnstrom Dining Hall</button>
-            <button class="location-btn" onclick="loadlonnstrombuffet()">Lonnstrom Buffet</button>
-        </div>
+        <!-- Dining, Academics, and Athletics Sections here -->
 
         <!-- 360 Image Viewer -->
-        <div id="viewer" style="width: 100%; height: 100vh;"></div>
+        <div id="viewer"></div>
     </main>
 
-    <!-- Load your custom JS after external libraries to ensure Pannellum is ready -->
     <script defer src="js/vrHandler.js"></script>
 </body>
 </html>
