@@ -4,14 +4,15 @@ function load360View(imageSrc) {
     const viewerContainer = document.getElementById('viewer-container'); // Get the viewer container
     const viewerElement = document.getElementById('viewer'); // Get the viewer element
 
-    // Hide the main menu or submenus when an image is loaded
+    // Hide the main menu, submenus, and header when an image is loaded
     document.getElementById('main-menu').style.display = 'none';
+    document.getElementById('header').style.display = 'none'; // Hide the header
     const subMenus = document.getElementsByClassName('sub-menu');
     for (let i = 0; i < subMenus.length; i++) {
         subMenus[i].style.display = 'none';
     }
 
-    // Show the viewer container (make it full screen)
+    // Show the viewer container
     viewerContainer.style.display = 'block';
 
     // If a viewer already exists, destroy it before creating a new one
@@ -23,25 +24,11 @@ function load360View(imageSrc) {
     viewer = pannellum.viewer(viewerElement, {
         type: "equirectangular",
         panorama: imageSrc, // Load the 360-degree image
-        autoLoad: true, // Automatically load the panorama
-        showControls: false, // Hide default controls
-        mouseZoom: true, // Enable zoom
-        orientationOnByDefault: true, // Enable orientation control
+        autoLoad: true,
+        showControls: false,
+        mouseZoom: true,
+        orientationOnByDefault: true,
     });
-}
-
-function showSubMenu(menuId) {
-    // Hide the main menu
-    document.getElementById('main-menu').style.display = 'none';
-
-    // Hide all submenus
-    const subMenus = document.getElementsByClassName('sub-menu');
-    for (let i = 0; i < subMenus.length; i++) {
-        subMenus[i].style.display = 'none';
-    }
-
-    // Show the selected submenu
-    document.getElementById(menuId).style.display = 'block';
 }
 
 function showMainMenu() {
@@ -50,9 +37,10 @@ function showMainMenu() {
         viewer.destroy();
     }
 
-    // Hide the viewer and show the main menu
+    // Hide the viewer, show the main menu, and restore the header
     document.getElementById('viewer-container').style.display = 'none';
     document.getElementById('main-menu').style.display = 'block';
+    document.getElementById('header').style.display = 'block'; // Show the header again
 }
 
 // Location Loading Functions
@@ -71,8 +59,6 @@ function loadsnyder() {
 function loadryan() {
     load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/ryan.jpg");
 }
-
-// You can add more functions for other locations here
 function loadfitnessdown() {
     load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/fitnessdown.jpg");
 }
