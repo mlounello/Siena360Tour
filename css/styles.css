@@ -66,19 +66,33 @@ header h1 {
     background-color: #FCC917; /* Siena Gold */
 }
 
-/* Back button inside the viewer */
-#back-to-menu, .back-btn {
-    position: absolute;
-    top: 15px;
-    left: 15px;
+/* Back button styles */
+#back-to-menu {
     background-color: rgba(255, 255, 255, 0.8); /* Slight transparency */
     color: #000;
     padding: 10px;
     border: none;
     border-radius: 5px;
     font-size: 1.2em;
-    z-index: 9999; /* Ensure it's above the viewer */
+    z-index: 9999;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Center the back button when in a category */
+.back-btn-center {
+    position: relative;
+    display: block;
+    margin: 20px auto;
+    width: 100px;
+}
+
+/* Move the back button to the top-left corner when in the scene */
+.back-btn-top-left {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: auto;
 }
 
 /* Viewer container styles */
@@ -115,18 +129,14 @@ header h1 {
     #back-to-menu {
         padding: 8px;
         font-size: 1em;
+    }
+
+    .back-btn-top-left {
         top: 10px;
         left: 10px;
     }
 
-    .back-btn {
-        width: 80px;
-        font-size: 1.2em;
-    }
-
-    /* Ensure full-screen viewer on mobile */
-    #viewer {
-        width: 100vw;
-        height: 100vh;
+    .back-btn-center {
+        margin-top: 15px;
     }
 }
