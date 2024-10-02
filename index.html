@@ -5,12 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Siena College 360 Virtual Tour</title>
 
-    <!-- Photo Sphere Viewer v4 CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.css">
-    
-    <!-- Three.js and Photo Sphere Viewer v4 -->
-    <script src="https://unpkg.com/three@0.141.0/build/three.min.js"></script>
-    <script src="https://unpkg.com/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.js"></script>
+    <!-- Pannellum Library -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
 
     <link rel="stylesheet" href="css/styles.css"> <!-- Your custom CSS -->
 </head>
@@ -49,34 +46,11 @@
             <button class="location-btn" onclick="loadlonnstrombuffet()">Lonnstrom Buffet</button>
         </div>
 
-        <!-- Academics -->
-        <div id="academics" class="sub-menu" style="display:none;">
-            <h2>Academics</h2>
-            <button class="back-btn" onclick="showMainMenu()">Back</button>
-            <button class="location-btn" onclick="loadmorelllab()">Morell Science Center Lab</button>
-            <button class="location-btn" onclick="loadmorell()">Morell Science Center</button>
-            <button class="location-btn" onclick="loadbaldwin()">Baldwin Nursing Center</button>
-            <button class="location-btn" onclick="loadhickeytrading()">Hickey Financial Trading Center</button>
-            <button class="location-btn" onclick="loadmootcourt()">Moot Court Room</button>
-            <button class="location-btn" onclick="loadsienahall()">Siena Hall Classroom</button>
-            <button class="location-btn" onclick="loadstackcenter()">Stack Center</button>
-            <button class="location-btn" onclick="loadstandish()">Standish Library</button>
-        </div>
-
-        <!-- Athletics & Fitness -->
-        <div id="athletics" class="sub-menu" style="display:none;">
-            <h2>Athletics & Fitness</h2>
-            <button class="back-btn" onclick="showMainMenu()">Back</button>
-            <button class="location-btn" onclick="loadfitnessup()">Fitness Center Upstairs</button>
-            <button class="location-btn" onclick="loadfitnessdown()">Fitness Center Downstairs</button>
-            <button class="location-btn" onclick="loadhickeyfield()">Hickey Field</button>
-        </div>
-
         <!-- 360 Image Viewer -->
         <div id="viewer" style="width: 100%; height: 100vh;"></div>
     </main>
 
-    <!-- Load your custom JS after external libraries to ensure Photo Sphere Viewer is ready -->
+    <!-- Load your custom JS after external libraries to ensure Pannellum is ready -->
     <script defer src="js/vrHandler.js"></script>
 </body>
 </html>
