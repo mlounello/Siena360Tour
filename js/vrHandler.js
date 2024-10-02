@@ -45,6 +45,21 @@ function showMainMenu() {
     // Hide the viewer and top-left back button
     document.getElementById('viewer-container').style.display = 'none';
     document.getElementById('back-to-menu').style.display = 'none'; // Hide the back button in the viewer
+
+    // Hide all submenus
+    const subMenus = document.getElementsByClassName('sub-menu');
+    for (let i = 0; i < subMenus.length; i++) {
+        subMenus[i].style.display = 'none';
+    }
+
+    // Show the main menu and restore the header
+    document.getElementById('main-menu').style.display = 'block';
+    document.getElementById('header').style.display = 'block'; // Show the header again
+}
+
+    // Hide the viewer and top-left back button
+    document.getElementById('viewer-container').style.display = 'none';
+    document.getElementById('back-to-menu').style.display = 'none'; // Hide the back button in the viewer
     document.getElementById('main-menu').style.display = 'block';
     document.getElementById('header').style.display = 'block'; // Show the header again
 }
