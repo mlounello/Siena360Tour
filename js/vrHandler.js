@@ -1,13 +1,18 @@
 let viewer; // Global viewer instance
 
+// Function to detect if the user is on a mobile device
+function isMobileDevice() {
+    return /Mobi|Android/i.test(navigator.userAgent);
+}
+
 function load360View(imageSrc) {
-    const viewerContainer = document.getElementById('viewer-container'); // Get the viewer container
-    const viewerElement = document.getElementById('viewer'); // Get the viewer element
-    const backToMenu = document.getElementById('back-to-menu'); // Get the back button for the viewer
+    const viewerContainer = document.getElementById('viewer-container');
+    const viewerElement = document.getElementById('viewer');
+    const backToMenu = document.getElementById('back-to-menu');
 
     // Hide the main menu, submenus, and header when an image is loaded
     document.getElementById('main-menu').style.display = 'none';
-    document.getElementById('header').style.display = 'none'; // Hide the header
+    document.getElementById('header').style.display = 'none';
     const subMenus = document.getElementsByClassName('sub-menu');
     for (let i = 0; i < subMenus.length; i++) {
         subMenus[i].style.display = 'none';
@@ -24,6 +29,9 @@ function load360View(imageSrc) {
         viewer.destroy();
     }
 
+    // Detect if the user is on a mobile device or desktop and set mouseDrag accordingly
+    const isMobile = isMobileDevice();
+
     // Initialize Pannellum Viewer with the new image, prevent fullscreen
     viewer = pannellum.viewer(viewerElement, {
         type: "equirectangular",
@@ -33,7 +41,8 @@ function load360View(imageSrc) {
         mouseZoom: true,
         orientationOnByDefault: true,
         autoRotate: -2, // Slow rotation, or remove if not needed
-        backgroundColor: [0, 107, 84] // Siena Green (RGB values for #006b54)
+        mouseDrag: !isMobile, // Enable mouse dragging for desktop, disable for mobile
+        backgroundColor: [0, 107, 84] // Siena Green background (RGB for #006b54)
     });
 }
 
