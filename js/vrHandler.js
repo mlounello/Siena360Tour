@@ -32,7 +32,7 @@ function load360View(imageSrc) {
     // Detect if the user is on a mobile device or desktop and set mouseDrag accordingly
     const isMobile = isMobileDevice();
 
-    // Initialize Pannellum Viewer with the new image
+    // Initialize Pannellum Viewer with the new image, disabling touch controls for mobile devices
     viewer = pannellum.viewer(viewerElement, {
         type: "equirectangular",
         panorama: imageSrc,
@@ -40,16 +40,18 @@ function load360View(imageSrc) {
         showControls: false,
         mouseZoom: true,
         orientationOnByDefault: true,
-        autoRotate: -2, // Slow rotation, or remove if not needed
+        autoRotate: -2, // Slow rotation
         mouseDrag: !isMobile, // Enable mouse dragging for desktop, disable for mobile
+        touchZoom: false, // Disable touch zoom
+        draggable: !isMobile, // Disable touch drag on mobile
         backgroundColor: [0, 107, 84] // Siena Green background (RGB for #006b54)
     });
 
-    // Disable touch interaction for mobile devices
+    // Specifically disable touch input on mobile
     if (isMobile) {
-        viewerContainer.addEventListener('touchstart', function (e) {
-            e.preventDefault(); // Prevent touch from overriding the gyroscope
-        });
+        viewerElement.addEventListener('touchstart', function (e) {
+            e.stopPropagation(); // Block touch events entirely
+        }, true);
     }
 }
 
