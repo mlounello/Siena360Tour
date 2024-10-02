@@ -135,4 +135,11 @@ header img {
         width: 100vw;
         height: 100vh;
     }
+
+    /* Disable touch interactions for iOS Safari specifically */
+    @supports (-webkit-touch-callout: none) {
+    #viewer {
+        touch-action: none;
+    }
+}
 }

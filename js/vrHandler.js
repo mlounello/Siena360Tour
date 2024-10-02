@@ -5,6 +5,11 @@ function isMobileDevice() {
     return /Mobi|Android/i.test(navigator.userAgent);
 }
 
+// Function to detect if the browser is Safari on iOS
+function isSafariOnIOS() {
+    return /iP(ad|hone|od).+Version\/[\d.]+.*Safari/i.test(navigator.userAgent);
+}
+
 function load360View(imageSrc) {
     const viewerContainer = document.getElementById('viewer-container');
     const viewerElement = document.getElementById('viewer');
@@ -31,8 +36,9 @@ function load360View(imageSrc) {
 
     // Detect if the user is on a mobile device or desktop and set mouseDrag accordingly
     const isMobile = isMobileDevice();
+    const isSafariIOS = isSafariOnIOS();
 
-    // Initialize Pannellum Viewer with the new image, disabling touch controls for mobile devices
+    // Initialize Pannellum Viewer with the new image
     viewer = pannellum.viewer(viewerElement, {
         type: "equirectangular",
         panorama: imageSrc,
@@ -40,15 +46,15 @@ function load360View(imageSrc) {
         showControls: false,
         mouseZoom: true,
         orientationOnByDefault: true,
-        autoRotate: -2, // Slow rotation
+        autoRotate: -2, // Slow rotation, or remove if not needed
         mouseDrag: !isMobile, // Enable mouse dragging for desktop, disable for mobile
         touchZoom: false, // Disable touch zoom
         draggable: !isMobile, // Disable touch drag on mobile
         backgroundColor: [0, 107, 84] // Siena Green background (RGB for #006b54)
     });
 
-    // Specifically disable touch input on mobile
-    if (isMobile) {
+    // Disable touch interaction for mobile devices, especially for Safari on iOS
+    if (isMobile || isSafariIOS) {
         viewerElement.addEventListener('touchstart', function (e) {
             e.stopPropagation(); // Block touch events entirely
         }, true);
