@@ -43,6 +43,20 @@ function showMainMenu() {
     document.getElementById('header').style.display = 'block'; // Show the header again
 }
 
+function showSubMenu(menuId) {
+    // Hide the main menu
+    document.getElementById('main-menu').style.display = 'none';
+
+    // Hide all submenus
+    const subMenus = document.getElementsByClassName('sub-menu');
+    for (let i = 0; i < subMenus.length; i++) {
+        subMenus[i].style.display = 'none';
+    }
+
+    // Show the selected submenu
+    document.getElementById(menuId).style.display = 'block';
+}
+
 // Location Loading Functions
 function loadbaldwin() {
     load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/baldwin.jpg");

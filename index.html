@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/styles.css"> <!-- Custom Styles -->
 </head>
 <body>
-    <header>
+    <header id="header">
         <img src="assets/siena-logo.png" alt="Siena College Logo"> <!-- Replace with actual logo path -->
         <h1>Siena College 360 Virtual Tour</h1>
     </header>
@@ -38,20 +38,11 @@
             <button class="location-btn" onclick="loadtownhouses()">The Townhouses</button>
         </div>
 
-        <!-- Dining -->
-        <div id="dining" class="sub-menu" style="display:none;">
-            <h2>Dining</h2>
-            <button class="back-btn" onclick="showMainMenu()">Back</button>
-            <button class="location-btn" onclick="loadcaseys()">Casey’s</button>
-            <button class="location-btn" onclick="loadlonnstromdining()">Lonnstrom Dining Hall</button>
-            <button class="location-btn" onclick="loadlonnstrombuffet()">Lonnstrom Buffet</button>
-        </div>
-
-        <!-- Academics, Athletics & Fitness Sections (add them similarly) -->
+        <!-- Dining (Add more as necessary) -->
 
         <!-- 360 Image Viewer (Initially hidden) -->
         <div id="viewer-container" style="display:none;">
-            <button id="back-to-menu" class="back-btn" style="position: absolute; top: 10px; left: 10px;" onclick="showMainMenu()">Back</button>
+            <button id="back-to-menu" class="back-btn" onclick="showMainMenu()">Back</button>
             <div id="viewer"></div>
         </div>
     </main>
