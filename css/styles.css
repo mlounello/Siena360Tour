@@ -33,6 +33,7 @@ header h1 {
     letter-spacing: 2px;
     color: #FFFFFF; /* White for headline */
     margin: 0;
+    padding-left: 80px; /* Add left padding to give space for the logo */
 }
 
 /* Main menu styles */
@@ -115,15 +116,22 @@ header h1 {
     background-color: #000000;
 }
 
-/* Responsive styles */
+/* Responsive styles for mobile devices */
 @media only screen and (max-width: 600px) {
+    header h1 {
+        font-size: 1.5em;
+        padding-left: 70px; /* Adjust padding for logo on mobile */
+    }
+
+    header img {
+        height: 50px; /* Reduce logo size on mobile */
+        top: 5px; /* Adjust top position of the logo */
+        left: 5px;
+    }
+
     .main-btn, .location-btn {
         font-size: 1.5em;
         padding: 15px;
-    }
-
-    header h1 {
-        font-size: 1.5em;
     }
 
     .back-btn {
