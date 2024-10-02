@@ -57,13 +57,6 @@ function showMainMenu() {
     document.getElementById('header').style.display = 'block'; // Show the header again
 }
 
-    // Hide the viewer and top-left back button
-    document.getElementById('viewer-container').style.display = 'none';
-    document.getElementById('back-to-menu').style.display = 'none'; // Hide the back button in the viewer
-    document.getElementById('main-menu').style.display = 'block';
-    document.getElementById('header').style.display = 'block'; // Show the header again
-}
-
 function showSubMenu(menuId) {
     // Hide the main menu
     document.getElementById('main-menu').style.display = 'none';
@@ -110,10 +103,6 @@ function loadmorelllab() {
 
 function loadmorell() {
     load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/morell.jpg");
-}
-
-function loadbaldwin() {
-    load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/baldwin.jpg");
 }
 
 function loadhickeytrading() {
