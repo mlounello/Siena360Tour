@@ -29,7 +29,48 @@
             <button class="main-btn" onclick="showSubMenu('athletics')">Athletics & Fitness</button>
         </div>
 
-        <!-- Sub Menus and 360 Viewer (like in previous versions) -->
+        <!-- Sub Menus -->
+        <!-- Living on Campus -->
+        <div id="living" class="sub-menu" style="display:none;">
+            <h2>Living on Campus</h2>
+            <button class="back-btn" onclick="showMainMenu()">Back</button>
+            <button class="location-btn" onclick="loadryan()">Ryan Hall</button>
+            <button class="location-btn" onclick="loadsnyder()">Snyder Hall</button>
+            <button class="location-btn" onclick="loadupperdorm()">Upperclassman Dorm</button>
+            <button class="location-btn" onclick="loadtownhouses()">The Townhouses</button>
+        </div>
+
+        <!-- Dining -->
+        <div id="dining" class="sub-menu" style="display:none;">
+            <h2>Dining</h2>
+            <button class="back-btn" onclick="showMainMenu()">Back</button>
+            <button class="location-btn" onclick="loadcaseys()">Casey's</button>
+            <button class="location-btn" onclick="loadlonnstromdining()">Lonnstrom Dining Hall</button>
+            <button class="location-btn" onclick="loadlonnstrombuffet()">Lonnstrom Buffet</button>
+        </div>
+
+        <!-- Academics -->
+        <div id="academics" class="sub-menu" style="display:none;">
+            <h2>Academics</h2>
+            <button class="back-btn" onclick="showMainMenu()">Back</button>
+            <button class="location-btn" onclick="loadmorelllab()">Morell Science Center Lab</button>
+            <button class="location-btn" onclick="loadmorell()">Morell Science Center</button>
+            <button class="location-btn" onclick="loadbaldwin()">Baldwin Nursing Center</button>
+            <button class="location-btn" onclick="loadhickeytrading()">Hickey Financial Trading Center</button>
+            <button class="location-btn" onclick="loadmootcourt()">Moot Court Room</button>
+            <button class="location-btn" onclick="loadsienahall()">Siena Hall Classroom</button>
+            <button class="location-btn" onclick="loadstackcenter()">Stack Center</button>
+            <button class="location-btn" onclick="loadstandish()">Standish Library</button>
+        </div>
+
+        <!-- Athletics & Fitness -->
+        <div id="athletics" class="sub-menu" style="display:none;">
+            <h2>Athletics & Fitness</h2>
+            <button class="back-btn" onclick="showMainMenu()">Back</button>
+            <button class="location-btn" onclick="loadfitnessup()">Fitness Center Upstairs</button>
+            <button class="location-btn" onclick="loadfitnessdown()">Fitness Center Downstairs</button>
+            <button class="location-btn" onclick="loadhickeyfield()">Hickey Field</button>
+        </div>
 
         <!-- 360 Image Viewer -->
         <div id="viewer" style="width: 100%; height: 100vh;"></div>

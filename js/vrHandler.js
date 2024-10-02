@@ -35,23 +35,44 @@ function enterVR() {
 }
 
 function showSubMenu(menuId) {
-    document.getElementById('main-menu').style.display = 'none';
+    // Hide the main menu
+    const mainMenu = document.getElementById('main-menu');
+    if (mainMenu) {
+        mainMenu.style.display = 'none';
+    } else {
+        console.error('Main menu not found!');
+        return;
+    }
 
-    let subMenus = document.getElementsByClassName('sub-menu');
+    // Hide all submenus
+    const subMenus = document.getElementsByClassName('sub-menu');
     for (let i = 0; i < subMenus.length; i++) {
         subMenus[i].style.display = 'none';
     }
 
-    document.getElementById(menuId).style.display = 'block';
+    // Show the selected submenu
+    const selectedMenu = document.getElementById(menuId);
+    if (selectedMenu) {
+        selectedMenu.style.display = 'block';
+    } else {
+        console.error(`Submenu with ID ${menuId} not found!`);
+    }
 }
 
 function showMainMenu() {
-    let subMenus = document.getElementsByClassName('sub-menu');
+    // Hide all submenus
+    const subMenus = document.getElementsByClassName('sub-menu');
     for (let i = 0; i < subMenus.length; i++) {
         subMenus[i].style.display = 'none';
     }
 
-    document.getElementById('main-menu').style.display = 'block';
+    // Show the main menu
+    const mainMenu = document.getElementById('main-menu');
+    if (mainMenu) {
+        mainMenu.style.display = 'block';
+    } else {
+        console.error('Main menu not found!');
+    }
 }
 
 // Update your functions to load the images using Photo Sphere Viewer
