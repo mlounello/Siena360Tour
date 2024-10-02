@@ -73,6 +73,8 @@ function loadsnyder() {
 function loadryan() {
     load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/ryan.jpg");
 }
+
+// Add more location loading functions for other categories like dining, athletics, and academics.
 function loadfitnessdown() {
     load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/fitnessdown.jpg");
 }
