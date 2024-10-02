@@ -13,27 +13,17 @@ body {
 /* Header styles */
 header {
     background-color: #006B54; /* Siena Green */
-    color: white;
     text-align: center;
     padding: 20px 0;
     position: relative;
 }
 
 header img {
-    height: 60px;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-}
-
-header h1 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 2.5em;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #FFFFFF;
-    margin: 0;
-    padding-left: 80px;
+    width: 100%; /* Make the image scale based on the container width */
+    max-width: 1200px; /* Restrict the maximum width */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin: 0 auto; /* Center the image */
 }
 
 /* Main menu and submenu styles */
@@ -94,7 +84,7 @@ header h1 {
     font-size: 1.2em;
     z-index: 9999; /* Ensure it's above the viewer */
     cursor: pointer;
-    display: none; /* Hidden by default, shown only when viewer is loaded */
+    display: block; /* Ensure it's visible */
 }
 
 /* Viewer container styles */
