@@ -30,6 +30,20 @@ function load360View(imageSrc) {
     });
 }
 
+function showSubMenu(menuId) {
+    // Hide the main menu
+    document.getElementById('main-menu').style.display = 'none';
+
+    // Hide all submenus
+    const subMenus = document.getElementsByClassName('sub-menu');
+    for (let i = 0; i < subMenus.length; i++) {
+        subMenus[i].style.display = 'none';
+    }
+
+    // Show the selected submenu
+    document.getElementById(menuId).style.display = 'block';
+}
+
 function showMainMenu() {
     // Ensure the viewer is destroyed when returning to the main menu
     if (viewer) {
@@ -41,7 +55,7 @@ function showMainMenu() {
     document.getElementById('main-menu').style.display = 'block';
 }
 
-// Update your functions to load the images using Pannellum
+// Location Loading Functions
 function loadbaldwin() {
     load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/baldwin.jpg");
 }
@@ -58,6 +72,7 @@ function loadryan() {
     load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/ryan.jpg");
 }
 
+// You can add more functions for other locations here
 function loadfitnessdown() {
     load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/fitnessdown.jpg");
 }
