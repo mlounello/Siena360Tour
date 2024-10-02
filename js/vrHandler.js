@@ -27,12 +27,13 @@ function load360View(imageSrc) {
     // Initialize Pannellum Viewer with the new image, prevent fullscreen
     viewer = pannellum.viewer(viewerElement, {
         type: "equirectangular",
-        panorama: imageSrc, // Load the 360-degree image
-        autoLoad: true,     // Load the image automatically
-        showControls: false, // Disable controls like fullscreen button
+        panorama: imageSrc,
+        autoLoad: true,
+        showControls: false,
         mouseZoom: true,
         orientationOnByDefault: true,
         autoRotate: -2, // Slow rotation, or remove if not needed
+        backgroundColor: [0, 107, 84] // Siena Green (RGB values for #006b54)
     });
 }
 

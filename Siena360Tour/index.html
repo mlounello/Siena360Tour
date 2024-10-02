@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siena College 360 Virtual Tour</title>
+
+    <!-- Pannellum Library -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+
+    <link rel="stylesheet" href="css/styles.css"> <!-- Custom Styles -->
+</head>
+<body>
+    <header id="header">
+        <img src="assets/siena-header.png" alt="Siena College Header Image"> <!-- Replace with actual image path -->
+    </header>
+
+    <main>
+        <!-- Main Navigation Menu -->
+        <div id="main-menu">
+            <h2>Select a Category</h2>
+            <button class="main-btn" onclick="showSubMenu('living')">Living on Campus</button>
+            <button class="main-btn" onclick="showSubMenu('dining')">Dining</button>
+            <button class="main-btn" onclick="showSubMenu('academics')">Academics</button>
+            <button class="main-btn" onclick="showSubMenu('athletics')">Athletics & Fitness</button>
+        </div>
+
+        <!-- Sub Menus -->
+        <!-- Living on Campus -->
+        <div id="living" class="sub-menu" style="display:none;">
+            <h2>Living on Campus</h2>
+            <button class="back-btn" onclick="showMainMenu()">Back</button>
+            <button class="location-btn" onclick="loadryan()">Ryan Hall</button>
+            <button class="location-btn" onclick="loadsnyder()">Snyder Hall</button>
+            <button class="location-btn" onclick="loadupperdorm()">Upperclassman Dorm</button>
+            <button class="location-btn" onclick="loadtownhouses()">The Townhouses</button>
+        </div>
+
+        <!-- Dining -->
+        <div id="dining" class="sub-menu" style="display:none;">
+            <h2>Dining</h2>
+            <button class="back-btn" onclick="showMainMenu()">Back</button>
+            <button class="location-btn" onclick="loadcaseys()">Casey’s</button>
+            <button class="location-btn" onclick="loadlonnstromdining()">Lonnstrom Dining Hall</button>
+            <button class="location-btn" onclick="loadlonnstrombuffet()">Lonnstrom Buffet</button>
+        </div>
+
+        <!-- Academics -->
+        <div id="academics" class="sub-menu" style="display:none;">
+            <h2>Academics</h2>
+            <button class="back-btn" onclick="showMainMenu()">Back</button>
+            <button class="location-btn" onclick="loadmorelllab()">Morell Science Center Lab</button>
+            <button class="location-btn" onclick="loadmorell()">Morell Science Center</button>
+            <button class="location-btn" onclick="loadbaldwin()">Baldwin Nursing Center</button>
+            <button class="location-btn" onclick="loadhickeytrading()">Hickey Financial Trading Center</button>
+            <button class="location-btn" onclick="loadmootcourt()">Moot Court Room</button>
+            <button class="location-btn" onclick="loadsienahall()">Siena Hall Classroom</button>
+            <button class="location-btn" onclick="loadstackcenter()">Stack Center</button>
+            <button class="location-btn" onclick="loadstandish()">Standish Library</button>
+        </div>
+
+        <!-- Athletics & Fitness -->
+        <div id="athletics" class="sub-menu" style="display:none;">
+            <h2>Athletics & Fitness</h2>
+            <button class="back-btn" onclick="showMainMenu()">Back</button>
+            <button class="location-btn" onclick="loadfitnessup()">Fitness Center Upstairs</button>
+            <button class="location-btn" onclick="loadfitnessdown()">Fitness Center Downstairs</button>
+            <button class="location-btn" onclick="loadhickeyfield()">Hickey Field</button>
+        </div>
+
+        <!-- 360 Image Viewer (Initially hidden) -->
+        <div id="viewer-container" style="display:none;">
+            <button id="back-to-menu" class="back-btn" onclick="showMainMenu()">Back</button>
+            <div id="viewer"></div>
+        </div>
+    </main>
+
+    <script defer src="js/vrHandler.js"></script>
+</body>
+</html>
