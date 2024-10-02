@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Siena College 360 Virtual Tour</title>
-    <link rel="stylesheet" href="https://unpkg.com/photo-sphere-viewer/dist/photo-sphere-viewer.min.css">
-    <script src="https://unpkg.com/three/build/three.min.js"></script>
-    <script src="https://unpkg.com/photo-sphere-viewer/dist/photo-sphere-viewer.min.js"></script>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Siena College 360 Virtual Tour</title>
+    
+        <!-- Add Photo Sphere Viewer v4 CSS -->
+        <link rel="stylesheet" href="https://unpkg.com/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.css">
+        
+        <!-- Add Three.js and Photo Sphere Viewer v4 scripts -->
+        <script src="https://unpkg.com/three@0.141.0/build/three.min.js"></script>
+        <script src="https://unpkg.com/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.js"></script>
+    
+        <link rel="stylesheet" href="css/styles.css"> <!-- Your custom CSS -->
+    </head>
 <body>
     <header>
         <h1>Siena College 360 Virtual Tour</h1>
@@ -71,6 +78,7 @@
         <div id="viewer" style="width: 100%; height: 100vh;"></div>
     </main>
 
+    <!-- Custom JavaScript -->
     <script src="js/vrHandler.js"></script>
 </body>
 </html>
