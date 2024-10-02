@@ -37,7 +37,7 @@ header h1 {
 }
 
 /* Main menu styles */
-#main-menu h2 {
+#main-menu h2, .sub-menu h2 {
     font-family: 'Gudea', sans-serif;
     color: #006B54;
     text-align: center;
@@ -45,7 +45,7 @@ header h1 {
     margin-top: 20px;
 }
 
-.main-btn {
+.main-btn, .location-btn {
     display: block;
     width: 80%;
     margin: 20px auto;
@@ -59,30 +59,25 @@ header h1 {
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
     letter-spacing: 1px;
+    transition: background-color 0.3s ease;
 }
 
-.main-btn:hover {
+.main-btn:hover, .location-btn:hover {
     background-color: #FCC917; /* Siena Gold */
 }
 
 /* Back button inside the viewer */
-#back-to-menu {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: rgba(255, 255, 255, 0.8); /* Slight transparency */
-    color: #000;
+#back-to-menu, .back-btn {
+    display: block;
+    margin: 20px auto;
     padding: 10px;
+    font-size: 1em;
+    background-color: #CCCCCC;
+    color: black;
     border: none;
     border-radius: 5px;
-    font-size: 1.2em;
-    z-index: 9999; /* Ensure it stays above the viewer */
+    width: 100px;
     cursor: pointer;
-}
-
-/* Hide submenus and viewer container initially */
-.sub-menu, #viewer-container {
-    display: none;
 }
 
 /* Viewer container styles */
@@ -119,5 +114,11 @@ header h1 {
     .back-btn {
         width: 80px;
         font-size: 1.2em;
+    }
+
+    /* Ensure full-screen viewer on mobile */
+    #viewer {
+        width: 100vw;
+        height: 100vh;
     }
 }
