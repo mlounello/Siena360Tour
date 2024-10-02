@@ -3,7 +3,19 @@ let viewer; // Global viewer instance
 function load360View(imageSrc) {
     const viewerContainer = document.getElementById('viewer'); // Get the viewer element
 
-    // Initialize Pannellum Viewer
+    // Hide the main menu or submenus when an image is loaded
+    document.getElementById('main-menu').style.display = 'none';
+    const subMenus = document.getElementsByClassName('sub-menu');
+    for (let i = 0; i < subMenus.length; i++) {
+        subMenus[i].style.display = 'none';
+    }
+
+    // If a viewer already exists, destroy it before creating a new one
+    if (viewer) {
+        viewer.destroy();
+    }
+
+    // Initialize Pannellum Viewer with the new image
     viewer = pannellum.viewer(viewerContainer, {
         type: "equirectangular",
         panorama: imageSrc, // Load the 360-degree image
@@ -14,55 +26,34 @@ function load360View(imageSrc) {
     });
 }
 
-function enterVR() {
-    // Pannellum doesn't support full VR, but this could toggle fullscreen
-    if (viewer) {
-        viewer.toggleFullscreen();
-    }
-}
-
-function showSubMenu(menuId) {
-    // Hide the main menu
-    const mainMenu = document.getElementById('main-menu');
-    if (mainMenu) {
-        mainMenu.style.display = 'none';
-    } else {
-        console.error('Main menu not found!');
-        return;
-    }
-
-    // Hide all submenus
-    const subMenus = document.getElementsByClassName('sub-menu');
-    for (let i = 0; i < subMenus.length; i++) {
-        subMenus[i].style.display = 'none';
-    }
-
-    // Show the selected submenu
-    const selectedMenu = document.getElementById(menuId);
-    if (selectedMenu) {
-        selectedMenu.style.display = 'block';
-    } else {
-        console.error(`Submenu with ID ${menuId} not found!`);
-    }
-}
-
 function showMainMenu() {
-    // Hide all submenus
+    // Ensure the viewer is destroyed when returning to the main menu
+    if (viewer) {
+        viewer.destroy();
+    }
+
+    // Hide all submenus and show the main menu again
     const subMenus = document.getElementsByClassName('sub-menu');
     for (let i = 0; i < subMenus.length; i++) {
         subMenus[i].style.display = 'none';
     }
 
-    // Show the main menu
-    const mainMenu = document.getElementById('main-menu');
-    if (mainMenu) {
-        mainMenu.style.display = 'block';
-    } else {
-        console.error('Main menu not found!');
-    }
+    document.getElementById('main-menu').style.display = 'block';
 }
 
-// Example function to load the images
+// Update your functions to load the images using Pannellum
+function loadbaldwin() {
+    load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/baldwin.jpg");
+}
+
+function loadcaseys() {
+    load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/caseys.jpg");
+}
+
+function loadsnyder() {
+    load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/snyder.jpg");
+}
+
 function loadryan() {
     load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/ryan.jpg");
 }
@@ -103,16 +94,8 @@ function loadmorelllab() {
     load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/morelllab.jpg");
 }
 
-function loadryan() {
-    load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/ryan.jpg");
-}
-
 function loadsienahall() {
     load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/sienahall.jpg");
-}
-
-function loadsnyder() {
-    load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/snyder.jpg");
 }
 
 function loadstackcenter() {
