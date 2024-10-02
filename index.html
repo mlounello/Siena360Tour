@@ -40,8 +40,11 @@
 
         <!-- Dining, Academics, and Athletics Sections here -->
 
-        <!-- 360 Image Viewer -->
-        <div id="viewer"></div>
+        <!-- 360 Image Viewer (Initially hidden) -->
+        <div id="viewer-container" style="display:none;">
+            <button id="back-to-menu" class="back-btn" style="position: absolute; top: 10px; left: 10px;" onclick="showMainMenu()">Back</button>
+            <div id="viewer"></div>
+        </div>
     </main>
 
     <script defer src="js/vrHandler.js"></script>

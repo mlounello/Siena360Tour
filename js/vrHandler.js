@@ -1,7 +1,8 @@
 let viewer; // Global viewer instance
 
 function load360View(imageSrc) {
-    const viewerContainer = document.getElementById('viewer'); // Get the viewer element
+    const viewerContainer = document.getElementById('viewer-container'); // Get the viewer container
+    const viewerElement = document.getElementById('viewer'); // Get the viewer element
 
     // Hide the main menu or submenus when an image is loaded
     document.getElementById('main-menu').style.display = 'none';
@@ -10,13 +11,16 @@ function load360View(imageSrc) {
         subMenus[i].style.display = 'none';
     }
 
+    // Show the viewer container (make it full screen)
+    viewerContainer.style.display = 'block';
+
     // If a viewer already exists, destroy it before creating a new one
     if (viewer) {
         viewer.destroy();
     }
 
     // Initialize Pannellum Viewer with the new image
-    viewer = pannellum.viewer(viewerContainer, {
+    viewer = pannellum.viewer(viewerElement, {
         type: "equirectangular",
         panorama: imageSrc, // Load the 360-degree image
         autoLoad: true, // Automatically load the panorama
@@ -32,12 +36,8 @@ function showMainMenu() {
         viewer.destroy();
     }
 
-    // Hide all submenus and show the main menu again
-    const subMenus = document.getElementsByClassName('sub-menu');
-    for (let i = 0; i < subMenus.length; i++) {
-        subMenus[i].style.display = 'none';
-    }
-
+    // Hide the viewer and show the main menu
+    document.getElementById('viewer-container').style.display = 'none';
     document.getElementById('main-menu').style.display = 'block';
 }
 
