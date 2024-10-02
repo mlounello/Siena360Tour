@@ -32,7 +32,7 @@ function load360View(imageSrc) {
     // Detect if the user is on a mobile device or desktop and set mouseDrag accordingly
     const isMobile = isMobileDevice();
 
-    // Initialize Pannellum Viewer with the new image, prevent fullscreen
+    // Initialize Pannellum Viewer with the new image
     viewer = pannellum.viewer(viewerElement, {
         type: "equirectangular",
         panorama: imageSrc,
@@ -44,6 +44,13 @@ function load360View(imageSrc) {
         mouseDrag: !isMobile, // Enable mouse dragging for desktop, disable for mobile
         backgroundColor: [0, 107, 84] // Siena Green background (RGB for #006b54)
     });
+
+    // Disable touch interaction for mobile devices
+    if (isMobile) {
+        viewerContainer.addEventListener('touchstart', function (e) {
+            e.preventDefault(); // Prevent touch from overriding the gyroscope
+        });
+    }
 }
 
 function showMainMenu() {
