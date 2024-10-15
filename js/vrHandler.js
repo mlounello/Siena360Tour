@@ -97,6 +97,14 @@ function showSubMenu(menuId) {
 }
 
 // Location Loading Functions
+function loadupperdorm() {
+    load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/upperdorm.jpg");
+}
+
+function loadtownhouses() {
+    load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/townhouses.jpg");
+}
+
 function loadbaldwin() {
     load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/baldwin.jpg");
 }
