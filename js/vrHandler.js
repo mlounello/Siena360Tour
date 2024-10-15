@@ -1,7 +1,5 @@
 let viewer; // Global viewer instance
-let gazeTimer; // Timer to track gaze time
-let gazeDuration = 2000; // Time in milliseconds for the gaze interaction to activate (2 seconds)
-let isGazing = false; // Track if gaze is active
+let selectionTimeout; // Hold the timeout for auto-selection
 
 // Function to detect if the user is on a mobile device
 function isMobileDevice() {
@@ -13,47 +11,24 @@ function isSafariOnIOS() {
     return /iP(ad|hone|od).+Version\/[\d.]+.*Safari/i.test(navigator.userAgent);
 }
 
-// Start gaze timer when hovering over a button
-function startGaze(button) {
-    if (isGazing) return; // Prevent multiple gazes
-    isGazing = true;
-    gazeTimer = setTimeout(() => {
-        button.click(); // Simulate a click after 2 seconds
-        isGazing = false;
-    }, gazeDuration);
+// Function to load the 360 view after a delay
+function load360ViewWithDelay(imageSrc) {
+    selectionTimeout = setTimeout(function () {
+        load360View(imageSrc); // Load the scene after the delay
+    }, 3000); // 3-second delay for auto-selection
 }
 
-// Clear gaze timer when leaving the button
-function clearGaze() {
-    clearTimeout(gazeTimer);
-    isGazing = false;
+// Function to reset the selection timeout (clear the delay)
+function resetSelectionTimeout() {
+    clearTimeout(selectionTimeout); // Stop the scene from loading if the user moves away from the button
 }
 
-// Add gaze detection to all buttons
-function addGazeListeners() {
-    const buttons = document.querySelectorAll('.main-btn, .location-btn, .back-btn');
-    buttons.forEach(button => {
-        button.addEventListener('mouseenter', () => startGaze(button)); // Gaze starts when looking at the button
-        button.addEventListener('mouseleave', clearGaze); // Clear gaze when looking away
-    });
-}
-
-// Call this after the page loads or after navigation
-document.addEventListener('DOMContentLoaded', addGazeListeners);
-
-// Call this again after loading new scenes or menus
-function updateGazeListeners() {
-    addGazeListeners(); // Ensure new buttons get the same gaze functionality
-}
-
-// Function to load 360 view with gaze support
 function load360View(imageSrc) {
     const viewerContainer = document.getElementById('viewer-container');
     const viewerElement = document.getElementById('viewer');
     const backToMenu = document.getElementById('back-to-menu');
-    const toggleModeButton = document.getElementById('toggle-mode');
 
-    // Hide menus and show the viewer
+    // Hide the main menu, submenus, and header when an image is loaded
     document.getElementById('main-menu').style.display = 'none';
     document.getElementById('header').style.display = 'none';
     const subMenus = document.getElementsByClassName('sub-menu');
@@ -61,15 +36,22 @@ function load360View(imageSrc) {
         subMenus[i].style.display = 'none';
     }
 
+    // Show the viewer container
     viewerContainer.style.display = 'block';
-    backToMenu.style.display = 'block';
-    toggleModeButton.style.display = 'block';
 
-    // Initialize Pannellum viewer
+    // Show the top-left back button for the viewer
+    backToMenu.style.display = 'block';
+
+    // If a viewer already exists, destroy it before creating a new one
     if (viewer) {
         viewer.destroy();
     }
 
+    // Detect if the user is on a mobile device or desktop and set mouseDrag accordingly
+    const isMobile = isMobileDevice();
+    const isSafariIOS = isSafariOnIOS();
+
+    // Initialize Pannellum Viewer with the new image
     viewer = pannellum.viewer(viewerElement, {
         type: "equirectangular",
         panorama: imageSrc,
@@ -77,48 +59,66 @@ function load360View(imageSrc) {
         showControls: false,
         mouseZoom: true,
         orientationOnByDefault: true,
-        autoRotate: -2,
-        backgroundColor: [0, 107, 84], // Siena Green background (RGB for #006b54)
+        autoRotate: -2, // Slow rotation, or remove if not needed
+        mouseDrag: !isMobile, // Enable mouse dragging for desktop, disable for mobile
+        touchZoom: false, // Disable touch zoom
+        draggable: !isMobile, // Disable touch drag on mobile
+        backgroundColor: [0, 107, 84] // Siena Green background (RGB for #006b54)
     });
 
-    // Update gaze listeners after loading the 360 view
-    updateGazeListeners();
+    // Disable touch interaction for mobile devices, especially for Safari on iOS
+    if (isMobile || isSafariIOS) {
+        viewerElement.addEventListener('touchstart', function (e) {
+            e.stopPropagation(); // Block touch events entirely
+        }, true);
+    }
 }
 
-// Function to return to the main menu
 function showMainMenu() {
+    // Ensure the viewer is destroyed when returning to the main menu
     if (viewer) {
         viewer.destroy();
     }
 
+    // Hide the viewer and top-left back button
     document.getElementById('viewer-container').style.display = 'none';
-    document.getElementById('back-to-menu').style.display = 'none';
-    document.getElementById('toggle-mode').style.display = 'none';
+    document.getElementById('back-to-menu').style.display = 'none'; // Hide the back button in the viewer
 
+    // Hide all submenus
     const subMenus = document.getElementsByClassName('sub-menu');
     for (let i = 0; i < subMenus.length; i++) {
         subMenus[i].style.display = 'none';
     }
 
+    // Show the main menu and restore the header
     document.getElementById('main-menu').style.display = 'block';
-    document.getElementById('header').style.display = 'block';
-
-    updateGazeListeners(); // Ensure gaze works when returning to the menu
+    document.getElementById('header').style.display = 'block'; // Show the header again
 }
 
-// Function to show submenus
 function showSubMenu(menuId) {
+    // Hide the main menu
     document.getElementById('main-menu').style.display = 'none';
 
+    // Hide all submenus
     const subMenus = document.getElementsByClassName('sub-menu');
     for (let i = 0; i < subMenus.length; i++) {
         subMenus[i].style.display = 'none';
     }
 
+    // Show the selected submenu
     document.getElementById(menuId).style.display = 'block';
 }
 
-// Location loading functions (for your 360 images)
+// Attach auto-selection events
+document.querySelectorAll('.location-btn').forEach(btn => {
+    btn.addEventListener('mouseenter', () => {
+        const imageSrc = btn.getAttribute('data-image'); // Get the associated image from data attributes
+        load360ViewWithDelay(imageSrc);
+    });
+    btn.addEventListener('mouseleave', resetSelectionTimeout); // Stop the selection if they hover away
+});
+
+// Location Loading Functions
 function loadbaldwin() {
     load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/baldwin.jpg");
 }
@@ -135,14 +135,7 @@ function loadryan() {
     load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/ryan.jpg");
 }
 
-function loadupperdorm() {
-    load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/upperdorm.jpg");
-}
-
-function loadtownhouses() {
-    load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/townhouses.jpg");
-}
-
+// Add more location loading functions for other categories
 function loadlonnstromdining() {
     load360View("https://media.githubusercontent.com/media/mlounello/Siena360Tour/refs/heads/main/assets/lonnstromdining.jpg");
 }
